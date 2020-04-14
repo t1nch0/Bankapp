@@ -10,7 +10,8 @@ public class BankAccountController {
         this.withdrawOperator = withdrawOperator;
     }
 
-    public void withdraw(int accountId, double amount) {
+        public void withdraw(int accountId, double amount) {
+
         this.withdrawOperator.execute(accountId, amount);
     }
     public void deposit (int accountId, double amount){

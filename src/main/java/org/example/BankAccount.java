@@ -13,6 +13,7 @@ public class BankAccount {
 
     public void withdraw(Double amount) {
         //total = total - 10;
+
         total=total-amount;
     }
     public void deposit(Double amount){

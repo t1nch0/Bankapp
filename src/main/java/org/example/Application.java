@@ -90,11 +90,21 @@ public class Application {
         while(true){
             System.out.println("Insert an amount to withdraw");
             amount=getAmount(scanner);
-            if(amount !=0||amount<0) {
-                System.out.println(amount);
-                bankAccount.withdraw(amount);
-                break;
+            double saldo=bankAccount.getBalance();
+            System.out.println(saldo);
+            if(amount>saldo) {
+
+                System.out.println("you don't have enough founds");
             }
+            else {
+                if (amount != 0 || amount < 0) {
+                    System.out.println(amount);
+                    bankAccount.withdraw(amount);
+                } else {
+                    System.out.println("invalid amount");
+                }
+            }
+            break;
         }
             showMainMenu();
             selectOption(bankAccount);
