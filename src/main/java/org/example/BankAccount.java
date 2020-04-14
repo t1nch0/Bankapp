@@ -11,8 +11,12 @@ public class BankAccount {
         this.total = 1000;
     }
 
-    public void withdraw() {
-        total = total - 10;
+    public void withdraw(Double amount) {
+        //total = total - 10;
+        total=total-amount;
+    }
+    public void deposit(Double amount){
+    total=total+amount;
     }
 
     public double getBalance() {

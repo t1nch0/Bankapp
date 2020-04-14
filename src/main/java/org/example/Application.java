@@ -57,6 +57,8 @@ public class Application {
                     case 'W':
                         withdraw(bankAccount);
                         break;
+                    case 'D':
+                        deposit(bankAccount);
                     default:
                         print(option + " is an invalid option");
                         break;
@@ -75,11 +77,45 @@ public class Application {
     private char getSelectedOption(Scanner scanner) {
         return scanner.nextLine().trim().toUpperCase().charAt(0);
     }
+    private double getAmount(Scanner scanner){
+        return scanner.nextDouble();
+    }
 
     private void withdraw(BankAccount bankAccount) {
         /*
         User should be able to select the amount
          */
-        bankAccount.withdraw();
+        try (Scanner scanner = new Scanner(System.in)) {
+        double amount=0;
+        while(true){
+            System.out.println("Insert an amount to withdraw");
+            amount=getAmount(scanner);
+            if(amount !=0||amount<0) {
+                System.out.println(amount);
+                bankAccount.withdraw(amount);
+                break;
+            }
+        }
+            showMainMenu();
+            selectOption(bankAccount);
+        }
+
+
+    }
+    private void deposit(BankAccount bankAccount){
+        try (Scanner scanner = new Scanner(System.in)) {
+            double amount=0;
+            while(true){
+                System.out.println("Insert an amount to deposit");
+                amount=getAmount(scanner);
+                if(amount !=0||amount>0) {
+                    System.out.println(amount);
+                    bankAccount.deposit(amount);
+                    break;
+                }
+            }
+            showMainMenu();
+            selectOption(bankAccount);
+        }
     }
 }
